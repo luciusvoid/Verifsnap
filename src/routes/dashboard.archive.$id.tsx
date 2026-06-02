@@ -120,21 +120,54 @@ function Detail() {
               icon={Copy}
               label="Copy link"
               onClick={() => {
-                navigator.clipboard.writeText(`https://verifsnap.app/a/${a.id}`);
+                const url = window.location.origin + `/dashboard/archive/${a.id}`;
+                navigator.clipboard.writeText(url);
                 toast.success("Link copied");
               }}
             />
             <ActionButton
               icon={Download}
               label="Download"
-              onClick={() => {
-                window.open(a.thumbnail, "_blank");
+              onClick={async () => {
+                try {
+                  toast.info("Preparing download...");
+                  const res = await fetch(a.thumbnail);
+                  const blob = await res.blob();
+                  const url = window.URL.createObjectURL(blob);
+                  const link = document.createElement("a");
+                  link.href = url;
+                  link.download = `verifsnap-${a.domain.replace(/[^a-z0-9]/gi, "-")}-${a.id}.png`;
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                  window.URL.revokeObjectURL(url);
+                  toast.success("Download started");
+                } catch (e) {
+                  // Fallback if CORS prevents blob download
+                  window.open(a.thumbnail, "_blank");
+                }
               }}
             />
             <ActionButton
               icon={Share2}
               label="Share"
-              onClick={() => toast.success("Share dialog opened")}
+              onClick={async () => {
+                const url = window.location.origin + `/dashboard/archive/${a.id}`;
+                if (navigator.share) {
+                  try {
+                    await navigator.share({
+                      title: a.title,
+                      text: `Check out this verified snapshot of ${a.domain}`,
+                      url: url,
+                    });
+                  } catch (e) {
+                    // user cancelled share
+                  }
+                } else {
+                  navigator.clipboard.writeText(url);
+                  toast.success("Link copied (Share API not supported)");
+                }
+              }}
             />
           </div>
 
