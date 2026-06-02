@@ -1,0 +1,301 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 */
+/* component: landing · genre: atmospheric · theme: dark-editorial */
+/* states: — (page-scope, not component) */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Hallmark font tokens — 2+1 discipline */
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+}
+
+/* VerifSnap Shelby — Light and Dark themes */
+:root {
+  --radius: 0.875rem;
+
+  --background: oklch(0.96 0.03 260);
+  --bg-gradient: 
+    radial-gradient(circle at 0% 0%, oklch(0.85 0.15 330 / 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, oklch(0.8 0.15 220 / 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, oklch(0.88 0.18 50 / 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, oklch(0.82 0.15 280 / 0.8) 0%, transparent 50%);
+  --foreground: oklch(0.14 0.012 270);
+
+  --card: oklch(0.99 0.01 260);
+  --card-foreground: oklch(0.14 0.012 270);
+
+  --popover: oklch(0.995 0.005 250);
+  --popover-foreground: oklch(0.14 0.012 270);
+
+  --primary: oklch(0.55 0.16 250);
+  --primary-foreground: oklch(0.98 0.005 270);
+
+  --secondary: oklch(0.94 0.015 250);
+  --secondary-foreground: oklch(0.2 0.015 270);
+
+  --muted: oklch(0.93 0.015 250);
+  --muted-foreground: oklch(0.35 0.015 270);
+
+  --accent: oklch(0.92 0.02 250);
+  --accent-foreground: oklch(0.14 0.012 270);
+
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.005 270);
+
+  --success: oklch(0.55 0.16 155);
+  --success-foreground: oklch(0.98 0.005 270);
+
+  --warning: oklch(0.8 0.15 75);
+
+  --border: oklch(0.88 0.02 250);
+  --input: oklch(0.88 0.02 250);
+  --ring: oklch(0.55 0.16 250);
+
+  --chart-1: oklch(0.55 0.16 250);
+  --chart-2: oklch(0.55 0.16 155);
+  --chart-3: oklch(0.55 0.16 280);
+  --chart-4: oklch(0.8 0.15 75);
+  --chart-5: oklch(0.55 0.22 25);
+
+  --sidebar: oklch(0.95 0.02 250);
+  --sidebar-foreground: oklch(0.14 0.012 270);
+  --sidebar-primary: oklch(0.55 0.16 250);
+  --sidebar-primary-foreground: oklch(0.98 0.005 270);
+  --sidebar-accent: oklch(0.92 0.02 250);
+  --sidebar-accent-foreground: oklch(0.14 0.012 270);
+  --sidebar-border: oklch(0.88 0.02 250);
+  --sidebar-ring: oklch(0.55 0.16 250);
+
+  --gradient-hero:
+    radial-gradient(60% 60% at 50% 0%, oklch(0.55 0.16 250 / 0.1) 0%, transparent 70%),
+    radial-gradient(40% 40% at 80% 30%, oklch(0.55 0.16 280 / 0.08) 0%, transparent 70%);
+  --gradient-mesh: linear-gradient(
+    135deg,
+    oklch(0.55 0.16 250 / 0.04),
+    oklch(0.55 0.16 280 / 0.04)
+  );
+  --shadow-glow: 0 0 0 1px oklch(0.55 0.16 250 / 0.15), 0 8px 40px -8px oklch(0.55 0.16 250 / 0.2);
+  --shadow-card: 0 1px 0 0 oklch(0 0 0 / 0.05) inset, 0 8px 32px -12px oklch(0 0 0 / 0.08);
+}
+
+.dark {
+  --background: oklch(0.16 0.012 270);
+  --bg-gradient: 
+    radial-gradient(100% 100% at 0% 0%, oklch(0.22 0.06 250 / 0.4) 0%, transparent 40%),
+    radial-gradient(100% 100% at 100% 100%, oklch(0.2 0.08 280 / 0.3) 0%, transparent 40%);
+  --foreground: oklch(0.97 0.005 270);
+
+  --card: oklch(0.2 0.014 270);
+  --card-foreground: oklch(0.97 0.005 270);
+
+  --popover: oklch(0.21 0.014 270);
+  --popover-foreground: oklch(0.97 0.005 270);
+
+  --primary: oklch(0.78 0.13 215);
+  --primary-foreground: oklch(0.16 0.012 270);
+
+  --secondary: oklch(0.26 0.018 270);
+  --secondary-foreground: oklch(0.97 0.005 270);
+
+  --muted: oklch(0.24 0.014 270);
+  --muted-foreground: oklch(0.68 0.015 270);
+
+  --accent: oklch(0.3 0.02 270);
+  --accent-foreground: oklch(0.97 0.005 270);
+
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.98 0.005 270);
+
+  --success: oklch(0.72 0.16 155);
+  --success-foreground: oklch(0.14 0.012 270);
+
+  --warning: oklch(0.8 0.15 75);
+
+  --border: oklch(0.3 0.015 270 / 60%);
+  --input: oklch(0.28 0.015 270);
+  --ring: oklch(0.78 0.13 215);
+
+  --chart-1: oklch(0.78 0.13 215);
+  --chart-2: oklch(0.72 0.16 155);
+  --chart-3: oklch(0.74 0.14 280);
+  --chart-4: oklch(0.8 0.15 75);
+  --chart-5: oklch(0.7 0.18 25);
+
+  --sidebar: oklch(0.18 0.013 270);
+  --sidebar-foreground: oklch(0.92 0.008 270);
+  --sidebar-primary: oklch(0.78 0.13 215);
+  --sidebar-primary-foreground: oklch(0.16 0.012 270);
+  --sidebar-accent: oklch(0.26 0.018 270);
+  --sidebar-accent-foreground: oklch(0.97 0.005 270);
+  --sidebar-border: oklch(0.28 0.015 270 / 70%);
+  --sidebar-ring: oklch(0.78 0.13 215);
+
+  --gradient-hero:
+    radial-gradient(60% 60% at 50% 0%, oklch(0.78 0.13 215 / 0.22) 0%, transparent 70%),
+    radial-gradient(40% 40% at 80% 30%, oklch(0.74 0.14 280 / 0.18) 0%, transparent 70%);
+  --gradient-mesh: linear-gradient(
+    135deg,
+    oklch(0.78 0.13 215 / 0.15),
+    oklch(0.74 0.14 280 / 0.15)
+  );
+  --shadow-glow: 0 0 0 1px oklch(0.78 0.13 215 / 0.15), 0 8px 40px -8px oklch(0.78 0.13 215 / 0.25);
+  --shadow-card: 0 1px 0 0 oklch(1 0 0 / 0.04) inset, 0 8px 32px -12px oklch(0 0 0 / 0.4);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  /* Hallmark gate 62 — overflow-x clip on both html and body, never hidden */
+  html {
+    color-scheme: light dark;
+    overflow-x: clip;
+  }
+  body {
+    background-color: var(--color-background);
+    background-image: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    /* Hallmark font tokens — no inline font-family allowed outside token block */
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  /* Keyboard navigation: visible focus ring on all interactive elements */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+  /* Remove focus ring for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: color-mix(in oklch, var(--card) 55%, transparent);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid color-mix(in oklch, var(--border) 40%, transparent);
+  }
+  .glass-strong {
+    background: color-mix(in oklch, var(--card) 78%, transparent);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+  }
+  .hero-bg {
+    background-image: var(--gradient-hero);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .text-gradient {
+    background: linear-gradient(180deg, var(--foreground) 0%, var(--muted-foreground) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(color-mix(in oklch, var(--foreground) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklch, var(--foreground) 5%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 8px;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.animate-shine {
+  background: linear-gradient(110deg, transparent 30%, color-mix(in oklch, var(--foreground) 8%, transparent) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shine 2.4s linear infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+.display-text {
+  font-family: var(--font-display);
+  overflow-wrap: anywhere;
+}
